@@ -11,12 +11,35 @@ env:
   BUCKET_NAME: facebookphp-cicd-bucket
   CODE_DEPLOY_APP_NAME: facebookphp_cicd
   DEPLOYMENT_GROUP_NAME: facebookphp_instance
+  ROOT_DB_HOST: ${{secrets.ROOT_DB_HOST}}
+  ROOT_DB_NAME: ${{secrets.ROOT_DB_NAME}}
+  ROOT_DB_PASSWORD: ${{secrets.ROOT_DB_PASSWORD}}
+  ROOT_DB_USER: ${{secrets.ROOT_DB_USER}}
+  ROOT_IP: ${{secrets.ROOT_IP}}
+  MY_DB_HOST: ${{secrets.MY_DB_HOST}}
+  MY_DB_NAME: ${{secrets.MY_DB_NAME}}
+  MY_DB_PASSWORD: ${{secrets.MY_DB_PASSWORD}}
+  MY_DB_USER: ${{secrets.MY_DB_USER}}
+  MY_IP: ${{secrets.MY_IP}}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Make .env File
+        run: |
+          echo "IP=$ROOT_IP" >> .env
+          echo "DB_HOST=$ROOT_DB_HOST" >> .env
+          echo "DB_USER=$ROOT_DB_USER" >> .env
+          echo "DB_PASSWORD=$ROOT_DB_PASSWORD" >> .env
+          echo "DB_NAME=$ROOT_DB_NAME" >> .env
+          echo "IP=$MY_IP" >> ./.env
+          echo "DB_HOST=$MY_DB_HOST" >> ./.env
+          echo "DB_USER=$MY_DB_USER" >> ./.env
+          echo "DB_PASSWORD=$MY_DB_PASSWORD" >> ./.env
+          echo "DB_NAME=$MY_DB_NAME" >> ./.env
 
       - name: Make Zip File
         run: zip -qq -r ./$GITHUB_SHA.zip .
