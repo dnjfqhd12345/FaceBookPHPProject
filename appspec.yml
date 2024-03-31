@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /home/ubuntu/moduform
+permissions:
+  - object: /home/ubuntu/moduform/
+    owner: ubuntu
+    group: ubuntu
