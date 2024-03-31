@@ -3,8 +3,8 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ubuntu/moduform
+    destination: /home/ubuntu/facebook_php
 permissions:
-  - object: /home/ubuntu/moduform/
+  - object: /home/ubuntu/facebook_php/
     owner: ubuntu
     group: ubuntu
