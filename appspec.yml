@@ -3,8 +3,8 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ubuntu/facebook_php
+    destination: /home/ubuntu/FaceBookPHPProject
 permissions:
-  - object: /home/ubuntu/facebook_php/
+  - object: /home/ubuntu/FaceBookPHPProject
     owner: ubuntu
     group: ubuntu

@@ -30,16 +30,21 @@ jobs:
 
       - name: Make .env File
         run: |
+          touch .env
           echo "IP=$ROOT_IP" >> .env
           echo "DB_HOST=$ROOT_DB_HOST" >> .env
           echo "DB_USER=$ROOT_DB_USER" >> .env
           echo "DB_PASSWORD=$ROOT_DB_PASSWORD" >> .env
           echo "DB_NAME=$ROOT_DB_NAME" >> .env
-          echo "IP=$MY_IP" >> ./.env
-          echo "DB_HOST=$MY_DB_HOST" >> ./.env
-          echo "DB_USER=$MY_DB_USER" >> ./.env
-          echo "DB_PASSWORD=$MY_DB_PASSWORD" >> ./.env
-          echo "DB_NAME=$MY_DB_NAME" >> ./.env
+          cat .env
+
+          touch web/.env
+          echo "IP=$MY_IP" >> web/.env
+          echo "DB_HOST=$MY_DB_HOST" >> web/.env
+          echo "DB_USER=$MY_DB_USER" >> web/.env
+          echo "DB_PASSWORD=$MY_DB_PASSWORD" >> web/.env
+          echo "DB_NAME=$MY_DB_NAME" >> web/.env
+          cat web/.env
 
       - name: Make Zip File
         run: zip -qq -r ./$GITHUB_SHA.zip .
