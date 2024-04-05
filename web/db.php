@@ -38,13 +38,27 @@ function db_select($query, $param=array()){
     }
 }
 
+
+function db_select_no_param($query){
+    $pdo = db_get_pdo();
+    try{
+        $st = $pdo->prepare($query);
+        $result = $st->fetchAll(PDO::FETCH_ASSOC);
+        $pdo = null;
+        return $result;
+    } catch (PDOException $ex) {
+        return false;
+    } finally {
+        $pdo = null;
+    }
+}
+
 function db_insert($query, $param = array()) {
     $pdo = db_get_pdo();
     try{
         $st = $pdo->prepare($query);
         $result = $st->execute($param);
         $last_id = $pdo->lastInsertId();
-        print_r($st->errorInfo());
         $pdo = null;
         if($result){
             return $last_id;

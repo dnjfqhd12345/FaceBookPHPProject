@@ -19,7 +19,7 @@ if($last_post_id == null){
 require_once("inc/db.php");
 
 $member_id = $_SESSION['member_id'];
-$post_query = "select post_id, post_content from tbl_post where member_id = :member_id and post_id < :post_id order by insert_date desc limit 10 "
+$post_query = "select post_id, post_content from tbl_post where member_id = :member_id and post_id < :post_id order by insert_date desc limit 10 ";
 $post_data = db_select($post_query, array("member_id" => $member_id, "post_id" => $last_post_id));
 
 echo json_encode(

@@ -16,7 +16,7 @@ if($post_id == null){
 }
 
 // DB Require
-require_once("../db.php");
+require_once("db.php");
 
 $member_id = $_SESSION['member_id'];
 
