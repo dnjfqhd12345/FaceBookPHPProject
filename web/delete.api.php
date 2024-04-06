@@ -1,17 +1,15 @@
 <?php
-header('Content-Type: application/json');
-
-// Check Login
+// check login
 session_start();
 if(isset($_SESSION['member_id']) === false) {
-    echo json_encode(array('result' => false));
+    header("Location: /list.php");
     exit();
 }
 
-// check parameter
-$post_id = isset($_POST['post_id']) ? $_POST['post_id'] : null;
-if($post_id == null){
-    echo json_encode(array('result' => false));
+// parameter check
+$following_user_id = isset($_POST['following_id']) ? $_POST['following_id'] : null;
+if($following_user_id == null || trim($following_user_id) == ''){
+    header("Location: /list.php");
     exit();
 }
 
@@ -20,9 +18,11 @@ require_once("db.php");
 
 $member_id = $_SESSION['member_id'];
 
-// delete article, check writer's ID
-$result = db_update_delete("delete from tbl_post where post_id = :post_id and member_id = :member_id",
-    array('post_id' => $post_id, 'member_id' => $member_id)
+// insert tbl_post
+$post_id = db_insert("insert into tbl_following (user_id_pk, following_id_pk) values (:user_id, :following_id)",
+    array('user_id'=>$member_id, 'following_id'=>$following_user_id)
 );
 
-echo json_encode(array('result' => $result));
+header("Location: /list.php");
+exit();
+?>
