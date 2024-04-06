@@ -1,14 +1,15 @@
 <?php
-// check login
+
+// Check Login
 session_start();
 if(isset($_SESSION['member_id']) === false) {
     header("Location: /list.php");
     exit();
 }
 
-// parameter check
-$following_user_id = isset($_POST['following_id']) ? $_POST['following_id'] : null;
-if($following_user_id == null || trim($following_user_id) == ''){
+// check parameter
+$post_id = isset($_POST['post_id']) ? $_POST['post_id'] : null;
+if($post_id == null){
     header("Location: /list.php");
     exit();
 }
@@ -18,11 +19,19 @@ require_once("db.php");
 
 $member_id = $_SESSION['member_id'];
 
-// insert tbl_post
-$post_id = db_insert("insert into tbl_following (user_id_pk, following_id_pk) values (:user_id, :following_id)",
-    array('user_id'=>$member_id, 'following_id'=>$following_user_id)
+// delete article, check writer's ID
+$result = db_update_delete("delete from tbl_post where post_id = :post_id and member_id = :member_id",
+    array('post_id' => $post_id, 'member_id' => $member_id)
 );
 
-header("Location: /list.php");
+// exception handler whether member_id of session and member_id of post are correct or not
+if($result === false){
+    echo "<script>alert('Illegal Access!');";
+    echo "window.location.href='/list.php';</script>";
+    exit();
+}
+
+echo "<script>alert('Delete successfully!');";
+echo "window.location.href='/list.php';</script>";
 exit();
 ?>
