@@ -42,7 +42,7 @@ $get_recommend_data = db_select($recommend_friend, array('MYuserID' => $member_i
         <!-- 여기에 데이터베이스 긁어와서 3명정도 보여주기 -->
 
         <?php foreach($get_recommend_data as $friend): ?>
-            <form action="following.post.php" method="post" style="display: inline;">
+            <form action="api/following.post.php" method="post" style="display: inline;">
                 <input type="hidden" name="following_id" value="<?php echo $friend['member_id']; ?>">
                 <button type="submit">
                     <?php echo $friend['login_name']; ?>
@@ -53,7 +53,7 @@ $get_recommend_data = db_select($recommend_friend, array('MYuserID' => $member_i
 
         <hr>
         <h3>Share your life to your friends!</h3>
-        <form method="POST" action="write.post.php">
+        <form method="POST" action="api/write.post.php">
             <p>
                 <input type="text" id="post_content" name="post_content" style="width:800px;height:100px;font-size:30px;" />
             </p>
@@ -73,11 +73,11 @@ $get_recommend_data = db_select($recommend_friend, array('MYuserID' => $member_i
                 <?php echo "Date: ".$post['insert_date']; ?><br>
                         <!-- 수정 및 삭제 버튼 -->
                 <?php if ($post['member_id'] == $member_id): ?>
-                    <form action="modify.page.php" method="post" style="display: inline;">
+                    <form action="api/modify.page.php" method="post" style="display: inline;">
                         <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
                         <button type="submit">Modify</button>
                     </form>
-                    <form action="delete.api.php" method="post" style="display: inline;">
+                    <form action="api/delete.api.php" method="post" style="display: inline;">
                         <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
                         <button type="submit">Delete</button>
                     </form>

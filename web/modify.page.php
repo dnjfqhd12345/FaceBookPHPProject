@@ -42,7 +42,7 @@ if($post_data['member_id'] != $member_id){
             </div>
             <br>
 
-        <form method="POST" action="modify.api.php">
+        <form method="POST" action="api/modify.api.php">
             <p>
                 <input type="text" id="update_content" name="update_content" style="width:800px;height:100px;font-size:30px;" />
                 <input type="hidden" name="post_id" value="<?php echo $post_data['post_id']; ?>">

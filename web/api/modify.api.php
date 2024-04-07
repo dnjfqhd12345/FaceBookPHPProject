@@ -14,7 +14,7 @@ if($post_content == null || trim($post_content) == ''){
 }
 
 // DB Require
-require_once("db.php");
+require_once("./../db.php");
 
 $member_id = $_SESSION['member_id'];
 $post_id = $_POST['post_id'];

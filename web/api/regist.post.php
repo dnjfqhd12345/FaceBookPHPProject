@@ -1,5 +1,5 @@
 <?php
-require_once("db.php");
+require_once("./../db.php");
 
 $login_id = isset($_POST['login_id']) ? $_POST['login_id'] : null;
 $login_pw = isset($_POST['login_pw']) ? $_POST['login_pw'] : null;

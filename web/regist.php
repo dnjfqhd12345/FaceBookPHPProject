@@ -6,7 +6,7 @@
     <body>
         <?php require_once("header.php"); ?>
         <h1>facebook_php Signup</h1>
-        <form method="POST" action="regist.post.php">
+        <form method="POST" action="api/regist.post.php">
         <p>
             ID:
             <input type="text" name="login_id" />
