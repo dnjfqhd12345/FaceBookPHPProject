@@ -73,7 +73,7 @@ $get_recommend_data = db_select($recommend_friend, array('MYuserID' => $member_i
                 <?php echo "Date: ".$post['insert_date']; ?><br>
                         <!-- 수정 및 삭제 버튼 -->
                 <?php if ($post['member_id'] == $member_id): ?>
-                    <form action="api/modify.page.php" method="post" style="display: inline;">
+                    <form action="modify.page.php" method="post" style="display: inline;">
                         <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
                         <button type="submit">Modify</button>
                     </form>
