@@ -14,7 +14,7 @@ if($following_user_id == null || trim($following_user_id) == ''){
 }
 
 // DB Require
-require_once("db.php");
+require_once("./../db.php");
 
 $member_id = $_SESSION['member_id'];
 
