@@ -20,6 +20,12 @@ It is a FaceBook toy project that is made of PHP.
 
 PHP, MySQL, AWS EC2, AWS S3, AWS CodeDeploy, Github Action, Docker
 
+## Built a CI/CD pipeline
+
+![스크린샷 2024-04-08 004700](https://github.com/dnjfqhd12345/FaceBookPHPProject/assets/102809474/df220787-ab7e-442e-9b0a-0a097761b547)
+
+By using Github Action, AWS S3, AWS CodeDeploy.
+
 ## Demo Video
 
 #### Signup, Login
