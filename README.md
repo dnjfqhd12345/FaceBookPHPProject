@@ -18,7 +18,7 @@ It is a FaceBook toy project that is made of PHP.
 
 ## Skill Stacks on this project
 
-PHP, MySQL, AWS EC2, AWS S3, AWS CodeDeploy, Github Action, Docker
+PHP, MySQL, AWS EC2, AWS S3, AWS CodeDeploy, Github Action, Docker, Nginx
 
 ## Built a CI/CD pipeline
 
